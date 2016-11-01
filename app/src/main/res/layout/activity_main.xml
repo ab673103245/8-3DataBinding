@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 使用MVM模式，最外层的布局是layout-->
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="user"
+            type="qianfeng.a8_3databinding.User"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{`username is:`+user.username}"/>
+
+        <!--
+        @{user.nickname??user.username} 如果nickname为null，则显示username
+        -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.nickname??user.username}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.password}"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            app:userface="@{user.userface}"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:layout_width="256dp"
+            app:url="@{user.url}"
+            android:layout_height="256dp"/>
+    </LinearLayout>
+</layout>
